@@ -15,27 +15,18 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import dj_database_url
 
-development = os.environ.get('DEVELOPMENT', False)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxagc(b!#-$i6)*bj'
-SECRET_KEY = os.environ.get('SECRET_KEY', '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxagc(b!#-$i6)*bj')
+SECRET_KEY = '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxagc(b!#-$i6)*bj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True
 
-#ALLOWED_HOSTS = ['globi-django.herokuapp.com']
-# if development:
-#     print('development now is ' + str(development))
-#     ALLOWED_HOSTS = ['127.0.0.1']
-# else:
-#     ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
-ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
+ALLOWED_HOSTS = ['globi-django.herokuapp.com']
 
 # Application definition
 
@@ -83,19 +74,17 @@ WSGI_APPLICATION = 'new_django.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-# if development:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.parse( os.environ.get('DATABASE_URL') )
-#
 # }
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+DATABASES = {
+    'default': dj_database_url.parse('postgres://qkkcjdqpmtlpcj:6f302580c46d597c72ae40e79ed170c9be7f7df1b7dd01b2cb060d4fa811ce30@ec2-54-217-204-34.eu-west-1.compute.amazonaws.com:5432/dhl0367liht0a')
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
