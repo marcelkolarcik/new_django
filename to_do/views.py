@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ItemForm
@@ -8,9 +10,12 @@ from .models import Item
 
 def get_to_do_list(request):
     items = Item.objects.all()
+    development = os.environ.get('DEVELOPMENT', False)
     context = {
-        "items": items
+        "items": items,
+        "development":development
     }
+
     return render(request, 'to_do/to_do_list.html', context)
 
 

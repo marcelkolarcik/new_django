@@ -16,7 +16,7 @@ import os
 import dj_database_url
 development = os.environ.get('DEVELOPMENT', False)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(development)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -29,11 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxag
 DEBUG = development
 
 #ALLOWED_HOSTS = ['globi-django.herokuapp.com']
-# if development:
-#     print('development now is ' + str(development))
-#     ALLOWED_HOSTS = ['127.0.0.1']
-# else:
-#     ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
+if development:
+    print('development now is ' + str(development))
+    ALLOWED_HOSTS = ['127.0.0.1']
+else:
+    ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 
 # Application definition
