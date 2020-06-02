@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import dj_database_url
+
 development = os.environ.get('DEVELOPMENT', False)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -29,11 +30,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxag
 DEBUG = development
 
 #ALLOWED_HOSTS = ['globi-django.herokuapp.com']
-if development:
-    print('development now is ' + str(development))
-    ALLOWED_HOSTS = ['127.0.0.1']
-else:
-    ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
+# if development:
+#     print('development now is ' + str(development))
+#     ALLOWED_HOSTS = ['127.0.0.1']
+# else:
+#     ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 
 # Application definition
@@ -82,18 +83,19 @@ WSGI_APPLICATION = 'new_django.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if development:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse( os.environ.get('DATABASE_URL') )
-
-}
+# if development:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.parse( os.environ.get('DATABASE_URL') )
+#
+# }
+DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
