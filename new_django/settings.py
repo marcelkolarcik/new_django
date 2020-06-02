@@ -26,7 +26,7 @@ SECRET_KEY = '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxagc(b!#-$i6)*bj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['globi-django.herokuapp.com']
 
 # Application definition
 
