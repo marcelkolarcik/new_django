@@ -88,8 +88,21 @@ WSGI_APPLICATION = 'new_django.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {
-    'default': dj_database_url.parse('postgres://qkkcjdqpmtlpcj:6f302580c46d597c72ae40e79ed170c9be7f7df1b7dd01b2cb060d4fa811ce30@ec2-54-217-204-34.eu-west-1.compute.amazonaws.com:5432/dhl0367liht0a')
+# DATABASES = {
+#     'default': dj_database_url.parse('postgres://qkkcjdqpmtlpcj:6f302580c46d597c72ae40e79ed170c9be7f7df1b7dd01b2cb060d4fa811ce30@ec2-54-217-204-34.eu-west-1.compute.amazonaws.com:5432/dhl0367liht0a')
+#
+# }
+
+if development:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse( os.environ.get('DATABASE_URL') )
 
 }
 
