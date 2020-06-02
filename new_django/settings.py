@@ -29,12 +29,12 @@ DEBUG = development
 
 #ALLOWED_HOSTS = ['globi-django.herokuapp.com']
 
-# if development:
-#
-#     ALLOWED_HOSTS = ['127.0.0.1',os.environ.get('HEROKU_HOSTNAME')]
-# else:
-#     ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
-ALLOWED_HOSTS = ['127.0.0.1',os.environ.get('HEROKU_HOSTNAME')]
+if development:
+
+    ALLOWED_HOSTS = ['127.0.0.1',os.environ.get('HEROKU_HOSTNAME')]
+else:
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+#ALLOWED_HOSTS = ['127.0.0.1',os.environ.get('HEROKU_HOSTNAME')]
 # Application definition
 
 INSTALLED_APPS = [
