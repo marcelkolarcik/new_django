@@ -11,9 +11,11 @@ from .models import Item
 def get_to_do_list(request):
     items = Item.objects.all()
     development = os.environ.get('DEVELOPMENT', False)
+    db = os.environ.get('DATABASE_URL')
     context = {
         "items": items,
-        "development":development
+        "development":development,
+        "db":db
     }
 
     return render(request, 'to_do/to_do_list.html', context)
