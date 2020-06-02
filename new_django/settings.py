@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import dj_database_url
 
+development = os.environ.get('DEVELOPMENT', False)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +27,13 @@ SECRET_KEY = '^ma)2njs(51yvqu46zu=&#fyjwy%55()+fxagc(b!#-$i6)*bj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['globi-django.herokuapp.com']
+#ALLOWED_HOSTS = ['globi-django.herokuapp.com']
+
+if development:
+
+    ALLOWED_HOSTS = ['127.0.0.1']
+else:
+    ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 
 # Application definition
 
